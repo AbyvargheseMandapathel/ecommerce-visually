@@ -1,17 +1,11 @@
-import {storeItems} from "./items"
-import Store from "./components/Store"
-import Cart from "./components/Cart"
-import useAlan from "./hooks/useAlan"
+import React from 'react';
+import useAlan from './hooks/useAlan';
+import Home from './Home';
 
 function App() {
-  useAlan()
+  useAlan();
 
-  return (
-    <>
-      <Store items={storeItems} />
-      <Cart />
-    </>
-  )
+  return <Home />;
 }
 
-export default App
+export default App;

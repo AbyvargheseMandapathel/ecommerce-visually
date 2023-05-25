@@ -42,7 +42,7 @@ export function CartProvider({ children }) {
 
   function checkout() {
     setCart([])
-    alert("Thank you for your purchase")
+    // alert("Thank you for your purchase")
   }
   function clearCart() {
     setCart([])

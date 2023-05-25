@@ -1,50 +1,54 @@
-import CartItem from "./CartItem"
-import classnames from "classnames"
-import formatCurrency from "../util/formatCurrency"
-import { useCart } from "../context/CartContext"
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import CartItem from './CartItem';
+import classnames from 'classnames';
+import formatCurrency from '../util/formatCurrency';
+import { useCart } from '../context/CartContext';
 
-export default function Cart() {
-  const {
-    cart,
-    showCartItems,
-    setShowCartItems,
-    showCart,
-    checkout
-  } = useCart()
+const Cart = () => {
+  const { cart, showCartItems, setShowCartItems, showCart, checkout } = useCart();
   const totalCents = cart.reduce((sum, entry) => {
-    return sum + entry.item.priceCents * entry.quantity
-  }, 0)
+    return sum + entry.item.priceCents * entry.quantity;
+  }, 0);
+
+  const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    // Perform any necessary actions before redirecting
+    checkout();
+
+    // Redirect to the checkout page
+    navigate('/checkout');
+  };
 
   return (
     <section className={classnames({ invisible: !showCart })}>
       <div
         className={classnames(
-          "mb-4",
-          "top-0",
-          "right-0",
-          "mr-4",
-          "mt-20",
-          "fixed",
+          'mb-4',
+          'top-0',
+          'right-0',
+          'mr-4',
+          'mt-20',
+          'fixed',
           { invisible: !showCartItems }
         )}
       >
         <div
-          style={{ maxHeight: "calc(100vh - 3rem)" ,maxWidth: "calc(50vh - 6rem)"}}
+          style={{ maxHeight: 'calc(100vh - 3rem)', maxWidth: 'calc(50vh - 6rem)' }}
           className="bg-white text-gray-700 body-font shadow-lg border rounded-lg flex flex-col"
         >
           <div className="overflow-y-auto px-4 pt-4">
-            {cart.map(entry => (
+            {cart.map((entry) => (
               <CartItem key={entry.itemId} entry={entry} />
             ))}
           </div>
           <div className="flex justify-between items-end border-t border-b py-2 px-4">
             <span className="font-bold text-lg uppercase">Total</span>
-            <span className="font-bold">
-              {formatCurrency(totalCents / 100)}
-            </span>
+            <span className="font-bold">{formatCurrency(totalCents / 100)}</span>
           </div>
           <button
-            onClick={checkout}
+            onClick={handleCheckout}
             className="text-white py-2 px-4 text-lg bg-purple-500 rounded hover:bg-purple-700 m-4"
           >
             Check out
@@ -52,7 +56,7 @@ export default function Cart() {
         </div>
       </div>
       <button
-        onClick={() => setShowCartItems(prev => !prev)}
+        onClick={() => setShowCartItems((prev) => !prev)}
         className="fixed top-0 right-0 mr-4 mt-4 w-12 bg-blue-500 p-2 rounded-full text-white hover:bg-blue-700"
       >
         <svg
@@ -73,5 +77,7 @@ export default function Cart() {
         </div>
       </button>
     </section>
-  )
-}
+  );
+};
+
+export default Cart;
