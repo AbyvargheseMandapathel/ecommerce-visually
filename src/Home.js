@@ -7,6 +7,7 @@ import Cart from './components/Cart';
 import Navbar from './components/Navbar';
 import { CartProvider } from './context/CartContext';
 import CheckoutForm from './components/CheckoutForm';
+import GoogleSignIn from './components/Login';
 
 function Home() {
   return (
@@ -17,6 +18,7 @@ function Home() {
           <Routes>
             <Route path="/" element={<Store items={storeItems} />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/login" element={<GoogleSignIn />} />
             <Route path="/checkout" element={<CheckoutForm />} />
           </Routes>
         </CartProvider>
@@ -26,3 +28,4 @@ function Home() {
 }
 
 export default Home;
+
