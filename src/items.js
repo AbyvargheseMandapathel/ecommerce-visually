@@ -3,7 +3,10 @@ import photo2 from "../src/img/amazon mouse.jpg"
 import photo3 from "../src/img/puma shoes.jpg"
 import photo4 from "../src/img/puma bag.jpg"
 import photo5 from "../src/img/Zebronics.webp"
-import photo6 from "../src/img/oppo
+import photo6 from "../src/img/oppo.png"
+import photo7 from "../src/img/iphone 14.webp"
+import iQOOZ7s5G from "../src/img/iqoo.jpg"
+
 export const storeItems =
 [
 {
