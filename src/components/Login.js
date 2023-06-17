@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
+require('dotenv').config({ path: '.env.development' });
+
 
 const GoogleSignIn = () => {
   const navigate = useNavigate();
